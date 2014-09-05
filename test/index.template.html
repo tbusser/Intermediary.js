@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mocha</title>
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+	<link rel="stylesheet" href="../out/static/css/site.css">
+	<script src="../node_modules/mocha/mocha.js"></script>
+	<script src="../node_modules/expect.js/index.js"></script>
+	<script src="../node_modules/sinon/pkg/sinon.js"></script>
+	<script src="../node_modules/requirejs/require.js"></script>
+	<script charset="utf-8">
+
+		if (!Function.prototype.bind) {
+		Function.prototype.bind = function (oThis) {
+			if (typeof this !== "function") {
+			// closest thing possible to the ECMAScript 5
+			// internal IsCallable function
+			throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+			}
+
+			var aArgs = Array.prototype.slice.call(arguments, 1),
+				fToBind = this,
+				fNOP = function () {},
+				fBound = function () {
+				return fToBind.apply(this instanceof fNOP && oThis
+						? this
+						: oThis,
+						aArgs.concat(Array.prototype.slice.call(arguments)));
+				};
+
+			fNOP.prototype = this.prototype;
+			fBound.prototype = new fNOP();
+
+			return fBound;
+		};
+		}
+
+	</script>
+</head>
+<body>
+
+<div id="mocha">
+</div>
+
+<script>
+
+	mocha.setup('bdd');
+
+	var mochaCallback = (window.mochaPhantomJS) ? mochaPhantomJS.run : mocha.run;
+
+	require.config({
+		baseUrl: 'src',
+		deps: {{ tests }},
+		callback: mochaCallback
+	});
+
+</script>
+
+</body>
+</html>
