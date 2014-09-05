@@ -1,0 +1,6 @@
+default:
+  - 'test'
+dist:
+  - 'uglify'
+test:
+  - 'test'
