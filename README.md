@@ -2,7 +2,7 @@
 Intermediary is a singleton class which can be used for communication between modules without them having to know about each other. It is written in plain JavaScript and doesn't have any dependencies.
 
 ## Based on Mediator.js
-This module is heavily inspired by [Mediator.js](https://github.com/ajacksified/Mediator.js). The modules are for almost all intents and purposes the same. The biggest difference is that this is a singleton and it exposes less methods and classes. All credits must go to [@jacksified](https://twitter.com/ajacksified).
+This module is heavily inspired by [Mediator.js](https://github.com/ajacksified/Mediator.js). The modules are for almost all intents and purposes the same. The biggest difference is that this is a singleton and it exposes less methods and classes. All credits must go to [@ajacksified](https://twitter.com/ajacksified).
 
 # Project set-up
 The project comes setup with two Grunt tasks. To use these you will first have to install the needed modules using the `npm install` command from within the project root folder.
