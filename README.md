@@ -44,7 +44,7 @@ Any message posted to a channel will also be posted to all the ancestors of that
 
 ## getSubscriber(namespace, id)
 This returns the subscriber for the namespace and id. Do not use this to change the priority of the subscriber as it will have no effect. To change the
-priority for the subscriber use [`setSubscriberPriority`](setsubscriberpriority-namespace-id-priority-).
+priority for the subscriber use [`setSubscriberPriority`](#setsubscriberpriority-namespace-id-priority-).
 
 ### Parameter: namespace (string)
 The namespace of the channel to which the subscriber is subscribed.
@@ -57,7 +57,7 @@ The result is `null` if the namespace could not be resolved to an existing chann
 
 
 ## once(namespace, callback, [context = {}], [options = {}])
-This is a convenience method for calling `subscribe` for a subscriber which should only be called once. See the description for [`subscribe`](subscribe-namespace-callback-context-options-) for further information.
+This is a convenience method for calling `subscribe` for a subscriber which should only be called once. See the description for [`subscribe`](#subscribe-namespace-callback-context-options-) for further information.
 
 
 ## publish(namespace, args)
