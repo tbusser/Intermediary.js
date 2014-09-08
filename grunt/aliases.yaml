@@ -1,6 +1,6 @@
 default:
-  - 'test'
+  - 'test:coverage'
 dist:
   - 'uglify'
-test:
-  - 'test'
+testcover:
+  - 'test:coverage'

@@ -10,8 +10,11 @@ The project comes setup with two Grunt tasks. To use these you will first have t
 ### Distribution task
 To create a minified version of the library you can use `grunt dist` to run the Uglify task. It will take the file in the `lib` folder and generate a minified version in the `dist` folder.
 
+### Test & coverage task
+There is a unit test for the Intermediary module. It is located in the `test\spec` folder and can be run using `grunt testcover`. This will run the unit test and also provides code coverage. Code coverage is generate by [Istanbul](http://gotwarlost.github.io/istanbul/). The code coverage report will be generated after succesfuly running the unit tests and can be found in `test\reports\html\index.html`
+
 ### Test task
-There is a unit test for the Intermediary module. It is located in the `test\spec` folder and can be run using `grunt test`. This will run the unit test and also provides code coverage. Code coverage is generate by [Istanbul](http://gotwarlost.github.io/istanbul/). The code coverage report will be generated after succesfuly running the unit tests and can be found in `test\reports\html\index.html`
+For Travis CI there is a separate task which will run the tests without the code coverage. This task can be started by running `grunt test:travis` or `npm test`
 
 ## Usage
 Intermediary can be used as-is without any other libraries. It can also be loaded with an AMD loader like Require.js and it is compatible with CommonJS. Once the module is loaded it can be accessed as Intermediary

@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 		grunt.warn('Unknown target - valid targets are "instrument" and "report"');
 	});
 
-	grunt.registerTask('test', 'Run JS Unit tests', function () {
+	grunt.registerMultiTask('test', 'Run JS Unit tests', function () {
 		var options = this.options();
 
 		var tests = grunt.file.expand(options.files).map(function(file) {
@@ -69,25 +69,17 @@ module.exports = function(grunt) {
 		});
 
 		// build the template
-		var template = grunt.file.read(options.template).replace('{{ tests }}', JSON.stringify(tests));
+		var template = grunt.file.read(options.template).replace('{{ tests }}', JSON.stringify(tests)).replace('{{ baseUrl }}', JSON.stringify(options.baseUrl));
 
 		// write template to tests directory and run tests
 		grunt.file.write(options.runner, template);
-		grunt.task.run('coverage:instrument', 'mocha', 'coverage:report');
+
+		if (this.target === 'travis') {
+			grunt.task.run('mocha:travis');
+			return;
+		} else if (this.target === 'coverage'){
+			grunt.task.run('coverage:instrument', 'mocha:coverage', 'coverage:report');
+			return;
+		}
 	});
-	grunt.registerTask('travis', 'Run JS Unit tests', function () {
-		var options = this.options();
-
-		var tests = grunt.file.expand(options.files).map(function(file) {
-			return '../' + file;
-		});
-
-		// build the template
-		var template = grunt.file.read(options.template).replace('{{ tests }}', JSON.stringify(tests));
-
-		// write template to tests directory and run tests
-		grunt.file.write(options.runner, template);
-		grunt.task.run('mocha');
-	});
-
 };

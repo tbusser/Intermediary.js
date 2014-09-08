@@ -50,7 +50,7 @@
 	var mochaCallback = (window.mochaPhantomJS) ? mochaPhantomJS.run : mocha.run;
 
 	require.config({
-		baseUrl: 'src',
+		baseUrl: {{ baseUrl }},
 		deps: {{ tests }},
 		callback: mochaCallback
 	});

@@ -1,10 +1,13 @@
 module.exports = {
-	test: {
+	options: {
+		reporter: 'Spec',
+		run: false,
+		log: true
+	},
+	coverage: {
 		src: 'test/index.html',
-		options: {
-			reporter: 'Spec',
-			run: false,
-			log: true
-		}
+	},
+	travis: {
+		src: 'test/index.html',
 	}
 };
