@@ -75,4 +75,19 @@ module.exports = function(grunt) {
 		grunt.file.write(options.runner, template);
 		grunt.task.run('coverage:instrument', 'mocha', 'coverage:report');
 	});
+	grunt.registerTask('travis', 'Run JS Unit tests', function () {
+		var options = this.options();
+
+		var tests = grunt.file.expand(options.files).map(function(file) {
+			return '../' + file;
+		});
+
+		// build the template
+		var template = grunt.file.read(options.template).replace('{{ tests }}', JSON.stringify(tests));
+
+		// write template to tests directory and run tests
+		grunt.file.write(options.runner, template);
+		grunt.task.run('mocha');
+	});
+
 };
