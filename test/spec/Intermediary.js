@@ -375,7 +375,7 @@ define(['Intermediary'], function(Intermediary) {
 			});
 			it('should pass the message data along to the subscribers', function () {
 				addSubscriber('root', spyIt);
-				Intermediary.publish('root', {data: 'thisIsIt'});
+				expect(Intermediary.publish('root', {data: 'thisIsIt'})).to.be.ok();
 				expect(spyIt.calledWith({data: 'thisIsIt'})).to.be(true);
 			});
 			it('should inform the subscriber which channel the message was posted to', function() {
