@@ -1,4 +1,6 @@
 # Intermediary.js
+[![Build Status](https://travis-ci.org/tbusser/Intermediary.js.svg?branch=master)](https://travis-ci.org/tbusser/Intermediary.js)
+
 Intermediary is a singleton class which can be used for communication between modules without them having to know about each other. It is written in plain JavaScript and doesn't have any dependencies.
 
 ## Based on Mediator.js
