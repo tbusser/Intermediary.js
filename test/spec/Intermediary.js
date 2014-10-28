@@ -381,12 +381,12 @@ define(['Intermediary'], function(Intermediary) {
 			it('should inform the subscriber which channel the message was posted to', function() {
 				addSubscriber('root', spyIt);
 				Intermediary.publish('root');
-				expect(spyIt.calledWith('root')).to.be(true);
+				expect(spyIt.calledWith(null, 'root')).to.be(true);
 			});
 			it('should inform the subscriber which virtual channel the message was posted to', function() {
 				addSubscriber('root', spyIt);
 				Intermediary.publish('root:sub1');
-				expect(spyIt.calledWith('root:sub1')).to.be(true);
+				expect(spyIt.calledWith(null, 'root:sub1')).to.be(true);
 			});
 
 
