@@ -137,6 +137,11 @@ The ID of the subscriber which should be removed from the channel.
 The method returns `null` when the provided namespace could not be resolved to an existing channel. It will return `false` when the namespace was resolved to a channel but the channel as no subscriber with the provided ID. The result is `true` when the subscriber was removed from the channel.
 
 ## Changelog
+2014-11-27:
+
+- Added a JavaScript Codestyle ruleset. This resulted in some warnings, these have all been fixed in this version. This release does not contain any functional changes.
+
+
 2014-10-28:
 
 - Made a change to `publish`. A publish to a channel without a message would result in the channel name not being the second argument but the first. To make sure the channel name is always the second argument there is now a test to see if there was a message object and if not, the first argument will now have the value `null`.

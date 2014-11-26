@@ -27,7 +27,7 @@ define(['Intermediary'], function(Intermediary) {
 	}
 	describe('Intermediary', function() {
 		afterEach(function() {
-			while(subscribers.length > 0) {
+			while (subscribers.length > 0) {
 				var subscriber = subscribers.pop();
 				Intermediary.unsubscribe(subscriber.channel, subscriber.id);
 				subscriber = null;
@@ -171,7 +171,7 @@ define(['Intermediary'], function(Intermediary) {
 					expect(spy.calledAfter(spy3)).to.be(true);
 					expect(spy.calledBefore(spy2)).to.be(true);
 					expect(spy2.calledAfter(spy)).to.be(true);
-				})
+				});
 			});
 		});
 
@@ -202,7 +202,6 @@ define(['Intermediary'], function(Intermediary) {
 			});
 			it('should call the subscriber once, even if the subscriber publishes to the same channel', function() {
 				var callback = { myCallback: function() {
-						//console.log('should be called once');
 						Intermediary.publish('root');
 					}},
 					callbackSpy = sinon.spy(callback, 'myCallback');
@@ -224,8 +223,8 @@ define(['Intermediary'], function(Intermediary) {
 				expect(Intermediary.getSubscriber('root', 'fake-guid')).to.be(undefined);
 			});
 			it('should return a Subscriber object when the channel has a subscriber with the specified ID', function() {
-				var guid = addSubscriber('root:sub1:sub2', callback);
-				var object = Intermediary.getSubscriber('root:sub1:sub2', guid);
+				var guid = addSubscriber('root:sub1:sub2', callback),
+				    object = Intermediary.getSubscriber('root:sub1:sub2', guid);
 				expect(object.id).to.be(guid);
 			});
 		});
@@ -254,8 +253,8 @@ define(['Intermediary'], function(Intermediary) {
 				expect(spy.called).to.be(false);
 			});
 			it('should remove all channel subscribers when the ID is null', function() {
-				var guidA = addSubscriber('root', spy);
-				var guidB = addSubscriber('root', spy);
+				var guidA = addSubscriber('root', spy),
+				    guidB = addSubscriber('root', spy);
 				// Verify that there are two subscribers to the channel
 				expect(Intermediary.getSubscriber('root', guidA).id).to.be(guidA);
 				expect(Intermediary.getSubscriber('root', guidB).id).to.be(guidB);
@@ -297,7 +296,6 @@ define(['Intermediary'], function(Intermediary) {
 					expect(Intermediary.publish('root')).to.not.be(null);
 					expect(spy.called).to.be(false);
 				});
-
 			});
 		});
 
@@ -373,7 +371,7 @@ define(['Intermediary'], function(Intermediary) {
 			it('should return false when trying to publish to a non-existing channel', function() {
 				expect(Intermediary.publish('fake-root', {data: 1})).to.be(null);
 			});
-			it('should pass the message data along to the subscribers', function () {
+			it('should pass the message data along to the subscribers', function() {
 				addSubscriber('root', spyIt);
 				expect(Intermediary.publish('root', {data: 'thisIsIt'})).to.be.ok();
 				expect(spyIt.calledWith({data: 'thisIsIt'})).to.be(true);
